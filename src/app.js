@@ -3,7 +3,7 @@ import express from 'express';
 /* const express = require('express'); */
 import './database';
 import userRoutes from './routes/userRoutes';
-
+import ordenRoutes from './routes/ordenRoutes';
 
 // ************ express() ************
 const app = express();
@@ -14,6 +14,9 @@ app.use(express.json());
 
 // route user
 app.use('/user', userRoutes);
+
+// ruta orden
+app.use('/orden', ordenRoutes);
 
 app.get('/', (req, res) =>{
     res.json('Bienvenido a mi aplicación');
