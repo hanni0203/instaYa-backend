@@ -1,4 +1,5 @@
 import user from '../models/User';
+import bcrypt from 'bcryptjs' 
 
 //muestra todos los usuarios
 export const list = async (req, res) => {
@@ -29,7 +30,7 @@ export const newUser = async (req, res) => {
         telefono: req.body.telefono,
         email: req.body.email,
         username: req.body.username,
-        password: req.body.password,
+        password: await user.encryptPassword(req.body.password),
     });
     await newUser.save();
     console.log(newUser);
@@ -55,6 +56,20 @@ export const findOneUser = async (req, res)=>{
         })
     }
 } 
+
+//validación del password
+export const singIn = async (req, res) => {
+    const userFound = await user.findOne({username: req.body.username})
+
+    if (!userFound) return res.status(400).json({message: "Usuario no encontrado"})
+
+    const matchPassword = await user.comparePassword (req.body.password, userFound.password)
+
+    if(!matchPassword) return res.status(401).json({message: "contraseña invalida"})
+
+    res.status(200).json({message: "Inicio de sesion exitoso!"})
+
+}
 
 //elimina a un usuario en forma lógica, cambiando el state a true
 export const deleteUser = async (req, res) =>{

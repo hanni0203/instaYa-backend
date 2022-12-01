@@ -10,6 +10,9 @@ router.get('/', userController.list);
 // ruta-guarda unnuevo usuario
 router.post('/', userController.newUser );
 
+// ruta-validación password
+router.post('/singIn', userController.singIn );
+
 //ruta-buscar un usuario por ID
 router.get('/:id', userController.findOneUser);
 

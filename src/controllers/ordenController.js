@@ -3,7 +3,7 @@ import orden from '../models/Orden';
 //muestra todas las ordenes 
 export const list = async (req, res) => {
     try {
-        const ordenes = await ordenes.find({state: false}).exec();
+        const ordenes = await orden.find({state: false}).exec();
         res.status(200).json({
             meta:{
                 status:200,
