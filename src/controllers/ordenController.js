@@ -25,7 +25,7 @@ export const newOrden = async (req, res) => {
     
     const newOrden = new orden ({
        //datos emisor
-        userName: req.body.userName,
+       userName: req.body.userName,
         nameEmisor: req.body.nameEmisor,
         tipoCcEmisor: req.body.tipoCcEmisor,
         numeroTipoEmisor: req.body.numeroTipoEmisor,
