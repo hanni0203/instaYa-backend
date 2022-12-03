@@ -46,7 +46,8 @@ export const newOrden = async (req, res) => {
         numeroTipoReceptor: req.body.numeroTipoReceptor,
         direccioReceptor: req.body.direccioReceptor,
         ciudadReceptor: req.body.ciudadReceptor,
-        telefonoReceptor: req.body.telefonoReceptor,   
+        telefonoReceptor: req.body.telefonoReceptor,  
+        estado: req.body.estado 
     
     });
     await newOrden.save();

@@ -7,7 +7,6 @@ const ordenSchema = new Schema({
         required: true,
         trim: true
     },
-    
     nameEmisor:{
         type: String,
         required: true,
@@ -38,11 +37,8 @@ const ordenSchema = new Schema({
         required: true,
         trim: true
     },
-
     fechaEmisor: {
         type: Date,
-        
-
     },
     horaEmisor: {
         type: String,
@@ -55,19 +51,16 @@ const ordenSchema = new Schema({
         required: true,
         trim: true
     },   
-
     cantidadEmcomienda:{
         type: Number,
         required: true,
         trim: true
     },   
-    
     largoEmcomienda:{
         type: Number,
         required: true,
         trim: true
     }, 
-
     anchoEmcomienda:{
         type: Number,
         required: true,
@@ -117,6 +110,11 @@ const ordenSchema = new Schema({
     state:{
         type:Boolean,
         default: false
+    },
+    estado:{
+        type: String,
+        required: true,
+        trim: true
     }
     
 },{
