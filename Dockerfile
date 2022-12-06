@@ -3,4 +3,4 @@ WORKDIR /app
 COPY package.json .
 RUN npm install
 COPY . .
-CMD ["nodemon", "src/app.js --exec babel-node"]
+CMD ["npm", "start"]
