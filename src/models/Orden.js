@@ -39,6 +39,7 @@ const ordenSchema = new Schema({
     },
     fechaEmisor: {
         type: Date,
+        default: Date.now 
     },
     horaEmisor: {
         type: String,
@@ -115,6 +116,9 @@ const ordenSchema = new Schema({
         type: String,
         required: true,
         trim: true
+    },
+    userId: {
+        type: Schema.Types.ObjectId, ref: 'User'
     }
     
 },{

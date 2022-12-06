@@ -1,9 +1,10 @@
 import orden from '../models/Orden';
 
-//muestra todas las ordenes 
+//Muestra las ordenes de un usuario
+// http:localhost:3001/orden?userId=12345
 export const list = async (req, res) => {
     try {
-        const ordenes = await orden.find({state: false}).exec();
+        const ordenes = await orden.find({state: false, userId: req.query.userId} ).exec();
         res.status(200).json({
             meta:{
                 status:200,
@@ -25,7 +26,7 @@ export const newOrden = async (req, res) => {
     
     const newOrden = new orden ({
        //datos emisor
-       userName: req.body.userName,
+        userName: req.body.userName,
         nameEmisor: req.body.nameEmisor,
         tipoCcEmisor: req.body.tipoCcEmisor,
         numeroTipoEmisor: req.body.numeroTipoEmisor,
@@ -47,7 +48,8 @@ export const newOrden = async (req, res) => {
         direccioReceptor: req.body.direccioReceptor,
         ciudadReceptor: req.body.ciudadReceptor,
         telefonoReceptor: req.body.telefonoReceptor,  
-        estado: req.body.estado 
+        estado: req.body.estado,
+        userId: req.body.userId
     
     });
     await newOrden.save();
@@ -75,9 +77,27 @@ export const findOneOrden = async (req, res)=>{
     }
 } 
 
+
+/* //localhost:5000/orden/edit/2
+export const UpdateOrden = async (req, res)=>{
+    orden.findByIdAndUpdate(req.params.id, {
+        $set: req.body
+    }, (error, data) => {
+        if (error) {
+            return next(error)
+        } else {
+            console.log('Orden updated successfully !')
+            res.json(data)
+        }
+    })
+} */
+
 //elimina a una orden de forma lógica, cambiando el state a true
-export const deleteOrden = async (req, res) =>{
+export const UpdateOrden = async (req, res) =>{
     const id = req.params.id;
-    await orden.findByIdAndUpdate(id, {$set:{state: true}}, {state: false});
+    await orden.findByIdAndUpdate(id, {
+        $set: {estado:"Cancelado", state:true}
+    });
     res.json({message: `La Orden con id: ${id} fue eliminada satisfactoriamente!`});
+
 }
