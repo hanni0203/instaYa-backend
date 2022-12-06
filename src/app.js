@@ -30,8 +30,8 @@ app.get('/', (req, res) =>{
 
 
 // ************ Set the server to listen ************
-app.listen(3001, () => {
-    console.log('Server running on port 3001', 'http://localhost:3001');
+app.listen(process.env.PORT, () => {
+    console.log('Server running on port', process.env.PORT);
 });
 
 
