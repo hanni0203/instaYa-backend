@@ -114,8 +114,8 @@ const ordenSchema = new Schema({
     },
     estado:{
         type: String,
-        required: true,
-        trim: true
+        default: "Guardado"
+      
     },
     userId: {
         type: Schema.Types.ObjectId, ref: 'User'

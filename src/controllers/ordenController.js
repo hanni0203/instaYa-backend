@@ -48,7 +48,6 @@ export const newOrden = async (req, res) => {
         direccioReceptor: req.body.direccioReceptor,
         ciudadReceptor: req.body.ciudadReceptor,
         telefonoReceptor: req.body.telefonoReceptor,  
-        estado: req.body.estado,
         userId: req.body.userId
     
     });
