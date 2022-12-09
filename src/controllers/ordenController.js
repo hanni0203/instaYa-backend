@@ -33,6 +33,7 @@ export const newOrden = async (req, res) => {
         direccionEmisor: req.body.direccionEmisor,
         ciudadEmisor: req.body.ciudadEmisor,
         telefonoEmisor: req.body.telefonoEmisor,
+        /* fechaEmisor: req.body.fechaEmisor, */
         horaEmisor: req.body.horaEmisor,
         // datos paquete 
         tipoEmcomienda: req.body.tipoEmcomienda,
